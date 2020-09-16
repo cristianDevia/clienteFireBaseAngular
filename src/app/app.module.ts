@@ -8,10 +8,15 @@ import { environment } from '../environments/environment';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireStorageModule } from 'angularfire2/storage';
 import { AngularFireAuthModule } from 'angularfire2/auth';
+import { UniversityServiceService } from './services/university-service.service';
+import { RegistriesListComponent } from './components/registries-list/registries-list.component';
+import { RegistriesAddComponent } from './components/registries-add/registries-add.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RegistriesListComponent,
+    RegistriesAddComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +25,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule // imports firebase/storage only needed for storage features
   ],
-  providers: [],
+  providers: [UniversityServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
