@@ -9,7 +9,7 @@
         <th>Número de creditos</th>
         <th>PPA</th>
         <th>Valor</th>
-        <th>ID</th>
+        <th>Opciones</th>
       </tr>
     </thead>
     <tbody>
@@ -22,7 +22,7 @@
             <td>{{registrie.creditsNumber}}</td>
             <td>{{registrie.ppa}}</td>
             <td>{{registrie.price}}</td>
-            <td>{{registrie.id}}</td>
+            <td><button class="btn btn-danger" (click)="delete(registrie)">Eliminar</button></td>
           </tr>          
     </tbody>
   </table>

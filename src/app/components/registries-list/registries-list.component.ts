@@ -20,4 +20,9 @@ export class RegistriesListComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  delete(registrie)
+  {
+    this.connection.deleteRegistry(registrie);
+  }
+
 }

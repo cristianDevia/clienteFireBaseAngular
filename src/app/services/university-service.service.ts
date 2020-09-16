@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from 'angularfire2/firestore';
+import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
@@ -22,6 +22,7 @@ export class UniversityServiceService {
 
   private registryCollection: AngularFirestoreCollection<Registry>;
   registries: Observable<Registry[]>;
+  private registryDoc: AngularFirestoreDocument<Registry>;
 
 
   constructor(private afs: AngularFirestore) {
@@ -42,5 +43,10 @@ export class UniversityServiceService {
   addNewRegistry(registry: Registry)
   {
     this.registryCollection.add(registry);
+  }
+
+  deleteRegistry(registry){
+    this.registryDoc = this.afs.doc<Registry>(`Registry/${registry.id}`);
+    this.registryDoc.delete();
   }
 }
