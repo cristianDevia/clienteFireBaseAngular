@@ -49,4 +49,9 @@ export class UniversityServiceService {
     this.registryDoc = this.afs.doc<Registry>(`Registry/${registry.id}`);
     this.registryDoc.delete();
   }
+
+  editRegistry(registry){
+    this.registryDoc = this.afs.doc<Registry>(`Registry/${registry.id}`);
+    this.registryDoc.update(registry);
+  }
 }

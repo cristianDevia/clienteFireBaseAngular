@@ -23,6 +23,64 @@
             <td>{{registrie.ppa}}</td>
             <td>{{registrie.price}}</td>
             <td><button class="btn btn-danger" (click)="delete(registrie)">Eliminar</button></td>
+            <td><button class="btn btn-danger" (click)="edit(registrie)" 
+              data-toggle="modal" data-target="#exampleModal">Actualizar</button></td>
           </tr>          
     </tbody>
   </table>
+
+  <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Editar:</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form (ngSubmit) = "addRegistryEdited()">
+
+          <input type = "number" placeholder="Número de matricula" 
+          name="registryNumber" class="form-control"
+          [(ngModel)] = "editRegistry.registryNumber"
+          >
+          <input type = "date" placeholder="Fecha" 
+          name="registryDate" class="form-control"
+          [(ngModel)] = "editRegistry.registryDate"
+          >
+          <input type = "number" placeholder="Cédula estudiante" 
+          name="studentID" class="form-control"
+          [(ngModel)] = "editRegistry.studentID"
+          >
+          <input type = "text" placeholder="Código estudiante" 
+          name="studentCode" class="form-control"
+          [(ngModel)] = "editRegistry.studentCode"
+          >
+          <input type = "text" placeholder="Programa" 
+          name="program" class="form-control"
+          [(ngModel)] = "editRegistry.program"
+          >
+          <input type = "number" placeholder="Número de creditos" 
+          name="creditsNumber" class="form-control"
+          [(ngModel)] = "editRegistry.creditsNumber"
+          >
+          <input type = "number" placeholder="PPA" 
+          name="ppa" class="form-control"
+          [(ngModel)] = "editRegistry.ppa"
+          >
+          <input type = "number" placeholder="Valor" 
+          name="price" class="form-control"
+          [(ngModel)] = "editRegistry.price"
+          >
+      
+          <button class="btn btn-primary mt-3" type="submit">Actualizar</button>
+      </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

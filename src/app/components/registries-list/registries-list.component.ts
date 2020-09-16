@@ -10,6 +10,17 @@ export class RegistriesListComponent implements OnInit {
 
   registries: any;
 
+    editRegistry: any = {
+    registryNumber: '',
+    registryDate: '',
+    studentID: '',
+    studentCode: '',
+    program: '',
+    creditsNumber: '',
+    ppa: '',
+    price: ''
+  }
+
   constructor(private connection: UniversityServiceService) { 
     this.connection.listRegistry().subscribe(registry => {
       this.registries = registry;
@@ -25,4 +36,13 @@ export class RegistriesListComponent implements OnInit {
     this.connection.deleteRegistry(registrie);
   }
 
+  edit(registrie)
+  {
+    this.editRegistry = registrie;
+  }
+
+  addRegistryEdited()
+  {
+    this.connection.editRegistry(this.editRegistry);
+  }
 }
