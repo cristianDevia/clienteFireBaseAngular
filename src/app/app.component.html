@@ -1,0 +1,23 @@
+<table class= "registry"> 
+<tr> 
+  <th> Número de matricula </th> 
+  <th>Fecha</th>
+  <th>Cédula estudiante</th>
+  <th>Código estudiante</th>
+  <th>Programa</th>
+  <th>Número de creditos</th>
+  <th>PPA</th>
+  <th>Valor</th>
+</tr>
+<tr *ngFor="let registry of Registry | async">
+  <td>{{registry.registryNumber}}</td>
+  <td>{{registry.registryDate}}</td>
+  <td>{{registry.studentID}}</td>
+  <td>{{registry.studentCode}}</td>
+  <td>{{registry.program}}</td>
+  <td>{{registry.creditsNumber}}</td>
+  <td>{{registry.ppa}}</td>
+  <td>{{registry.price}}</td>
+</tr>
+
+</table>
