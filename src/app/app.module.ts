@@ -12,12 +12,16 @@ import { UniversityServiceService } from './services/university-service.service'
 import { RegistriesListComponent } from './components/registries-list/registries-list.component';
 import { RegistriesAddComponent } from './components/registries-add/registries-add.component';
 import { FormsModule } from '@angular/forms';
+import { ListStudentsComponent } from './components/list-students/list-students.component';
+import { ListProgramsComponent } from './components/list-programs/list-programs.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistriesListComponent,
-    RegistriesAddComponent
+    RegistriesAddComponent,
+    ListStudentsComponent,
+    ListProgramsComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,7 @@ import { FormsModule } from '@angular/forms';
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,
     AngularFireStorageModule // imports firebase/storage only needed for storage features
   ],
-  providers: [UniversityServiceService],
+  providers: [UniversityServiceService, RegistriesAddComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

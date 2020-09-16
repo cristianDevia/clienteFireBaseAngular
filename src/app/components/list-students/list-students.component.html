@@ -1,0 +1,26 @@
+<table class="table table-sm">
+    <thead>
+      <tr>
+        <th>Nombre </th> 
+        <th>Cédula</th>
+        <th>Código</th>
+        <th>Correo</th>
+        <th>Celular</th>
+        <th>Fecha de nacimiento</th>
+        <th>Género</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let student of students">
+            <td>{{student.name}}</td>
+            <td>{{student.id}}</td>
+            <td>{{student.code}}</td>
+            <td>{{student.email}}</td>
+            <td>{{student.celphone}}</td>
+            <td>{{student.dateOfBirth}}</td>
+            <td>{{student.gender}}</td>
+            <td><button class="btn btn-danger" (click)="importStudentCode(student)">Importar</button></td>
+          </tr>          
+    </tbody>
+  </table>

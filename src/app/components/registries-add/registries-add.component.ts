@@ -8,24 +8,18 @@ import { UniversityServiceService } from 'src/app/services/university-service.se
 })
 export class RegistriesAddComponent implements OnInit {
 
-  registry: any = {
-    registryNumber: '',
-    registryDate: '',
-    studentID: '',
-    studentCode: '',
-    program: '',
-    creditsNumber: '',
-    ppa: '',
-    price: ''
-  }
+  registry = null;
+    
 
   constructor( private connection: UniversityServiceService) { }
 
   ngOnInit(): void {
+    this.registry = this.connection.registry;
   }
 
   addRegistry(){
     this.connection.addNewRegistry(this.registry);
+    this.connection.cleanRegistry();
+    this.registry = this.connection.registry;
   }
-
 }

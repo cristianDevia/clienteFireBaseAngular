@@ -1,3 +1,10 @@
+
+  <div>
+    <label>Número: </label> <input type = "number"  name="searchRegistryByNumber" id="searchRegistryByNumber">
+    <button class="btn btn-info mr-3" (click)="search()">Buscar</button>
+    <button class="btn btn-info mr-3" (click)="clean()">Limpiar</button>
+  </div>
+  
 <table class="table table-sm">
     <thead>
       <tr>
@@ -44,7 +51,7 @@
 
           <input type = "number" placeholder="Número de matricula" 
           name="registryNumber" class="form-control"
-          [(ngModel)] = "editRegistry.registryNumber"
+          [(ngModel)] = "editRegistry.registryNumber" readonly
           >
           <input type = "date" placeholder="Fecha" 
           name="registryDate" class="form-control"
@@ -52,15 +59,15 @@
           >
           <input type = "number" placeholder="Cédula estudiante" 
           name="studentID" class="form-control"
-          [(ngModel)] = "editRegistry.studentID"
+          [(ngModel)] = "editRegistry.studentID" readonly
           >
           <input type = "text" placeholder="Código estudiante" 
           name="studentCode" class="form-control"
-          [(ngModel)] = "editRegistry.studentCode"
+          [(ngModel)] = "editRegistry.studentCode" readonly
           >
           <input type = "text" placeholder="Programa" 
           name="program" class="form-control"
-          [(ngModel)] = "editRegistry.program"
+          [(ngModel)] = "editRegistry.program" readonly
           >
           <input type = "number" placeholder="Número de creditos" 
           name="creditsNumber" class="form-control"

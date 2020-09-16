@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 
 export interface Registry {
   registryNumber: number;
@@ -14,6 +14,15 @@ export interface Registry {
   price: number;
 }
 
+export interface Student{
+  name: string;
+  id: number;
+  code: string;
+  email: string;
+  celphone: number;
+  dateOfBirth: Date;
+  gender: string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -21,9 +30,23 @@ export interface Registry {
 export class UniversityServiceService {
 
   private registryCollection: AngularFirestoreCollection<Registry>;
-  registries: Observable<Registry[]>;
   private registryDoc: AngularFirestoreDocument<Registry>;
+  registries: Observable<Registry[]>;
+  
+  private studentsCollection: AngularFirestoreCollection<Student>;
+  private studentsDoc: AngularFirestoreDocument<Student>;
+  students: Observable<Student[]>;
 
+  private _registry: Registry = {
+    registryNumber: null,
+    registryDate: null,
+    studentID: null,
+    studentCode: '',
+    program: '',
+    creditsNumber: null,
+    ppa: null,
+    price: null
+  };
 
   constructor(private afs: AngularFirestore) {
     this.registryCollection = afs.collection<Registry>('Registry');
@@ -34,15 +57,45 @@ export class UniversityServiceService {
         return { id, ...data };
       });
     }));
+
+    this.studentsCollection = afs.collection<Student>('Student');
+    this.students = this.studentsCollection.snapshotChanges().pipe(map(actionsStudent => {
+      return actionsStudent.map(b => {
+        const data = b.payload.doc.data() as Student;
+        const id = b.payload.doc.id;
+        return { id, ...data };
+      });
+    }));
+
+  }
+
+  get registry()
+  {
+    return this._registry;
+  }
+
+  importStudentsCodeAndId(student)
+  {
+    this.registry.studentID = student.id;
+    this.registry.studentCode = student.code;
+
+    console.log('codigo y cedula estudiante:', this.registry);
   }
 
   listRegistry(){
     return this.registries;
   }
 
+  listStudents(){
+    return this.students;
+  }
+
   addNewRegistry(registry: Registry)
   {
-    this.registryCollection.add(registry);
+    const newRegistry = {... registry};
+    this.registryCollection.add(newRegistry);
+    console.log('Matricula agregada', newRegistry);
+
   }
 
   deleteRegistry(registry){
@@ -54,4 +107,23 @@ export class UniversityServiceService {
     this.registryDoc = this.afs.doc<Registry>(`Registry/${registry.id}`);
     this.registryDoc.update(registry);
   }
+
+  searchRegistry(registryNumber){
+
+  }
+
+  cleanRegistry(){
+    this._registry = {    
+      registryNumber: null,
+      registryDate: null,
+      studentID: null,
+      studentCode: '',
+      program: '',
+      creditsNumber: null,
+      ppa: null,
+      price: null
+    }
+    console.log('limpiar', this._registry);
+  }
+
 }

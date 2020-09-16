@@ -9,12 +9,12 @@
     [(ngModel)] = "registry.registryDate"
     >
     <input type = "number" placeholder="Cédula estudiante" 
-    name="studentID" class="form-control"
-    [(ngModel)] = "registry.studentID"
+    name="studentID" id="studentID" class="form-control"
+    [(ngModel)] = "registry.studentID" readonly
     >
-    <input type = "text" placeholder="Código estudiante" 
-    name="studentCode" class="form-control"
-    [(ngModel)] = "registry.studentCode"
+    <input type = "text" placeholder="Código estudiante"
+    name="studentCode" id="studentCode" class="form-control"
+    [(ngModel)] = "registry.studentCode" readonly
     >
     <input type = "text" placeholder="Programa" 
     name="program" class="form-control"

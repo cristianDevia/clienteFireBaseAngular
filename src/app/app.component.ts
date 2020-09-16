@@ -12,8 +12,10 @@ export class AppComponent {
   title = 'clienteFireBaseAngular';
 
   Registry: Observable<any[]>;
+  Student: Observable<any[]>;
   constructor(db: AngularFirestore) {
     this.Registry = db.collection('Registry').valueChanges();
+    this.Student = db.collection('Student').valueChanges();
   }
 
 }
