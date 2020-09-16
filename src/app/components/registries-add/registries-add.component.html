@@ -1,1 +1,37 @@
-<p>registries-add works!</p>
+<form (ngSubmit) = "addRegistry()">
+
+    <input type = "number" placeholder="Número de matricula" 
+    name="registryNumber" class="form-control"
+    [(ngModel)] = "registry.registryNumber"
+    >
+    <input type = "date" placeholder="Fecha" 
+    name="registryDate" class="form-control"
+    [(ngModel)] = "registry.registryDate"
+    >
+    <input type = "number" placeholder="Cédula estudiante" 
+    name="studentID" class="form-control"
+    [(ngModel)] = "registry.studentID"
+    >
+    <input type = "text" placeholder="Código estudiante" 
+    name="studentCode" class="form-control"
+    [(ngModel)] = "registry.studentCode"
+    >
+    <input type = "text" placeholder="Programa" 
+    name="program" class="form-control"
+    [(ngModel)] = "registry.program"
+    >
+    <input type = "number" placeholder="Número de creditos" 
+    name="creditsNumber" class="form-control"
+    [(ngModel)] = "registry.creditsNumber"
+    >
+    <input type = "number" placeholder="PPA" 
+    name="ppa" class="form-control"
+    [(ngModel)] = "registry.ppa"
+    >
+    <input type = "number" placeholder="Valor" 
+    name="price" class="form-control"
+    [(ngModel)] = "registry.price"
+    >
+
+    <button class="btn btn-warning mt-3" type="submit">Agregar</button>
+</form>

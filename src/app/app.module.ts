@@ -11,6 +11,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
 import { UniversityServiceService } from './services/university-service.service';
 import { RegistriesListComponent } from './components/registries-list/registries-list.component';
 import { RegistriesAddComponent } from './components/registries-add/registries-add.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { RegistriesAddComponent } from './components/registries-add/registries-a
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule, // imports firebase/firestore, only needed for database features
     AngularFireAuthModule, // imports firebase/auth, only needed for auth features,

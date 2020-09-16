@@ -1,1 +1,28 @@
-<p>registries-list works!</p>
+<table class="table table-sm">
+    <thead>
+      <tr>
+        <th>Número de matricula </th> 
+        <th>Fecha</th>
+        <th>Cédula estudiante</th>
+        <th>Código estudiante</th>
+        <th>Programa</th>
+        <th>Número de creditos</th>
+        <th>PPA</th>
+        <th>Valor</th>
+        <th>ID</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let registrie of registries">
+            <td>{{registrie.registryNumber}}</td>
+            <td>{{registrie.registryDate}}</td>
+            <td>{{registrie.studentID}}</td>
+            <td>{{registrie.studentCode}}</td>
+            <td>{{registrie.program}}</td>
+            <td>{{registrie.creditsNumber}}</td>
+            <td>{{registrie.ppa}}</td>
+            <td>{{registrie.price}}</td>
+            <td>{{registrie.id}}</td>
+          </tr>          
+    </tbody>
+  </table>

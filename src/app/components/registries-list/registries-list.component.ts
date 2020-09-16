@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UniversityServiceService } from 'src/app/services/university-service.service';
 
 @Component({
   selector: 'app-registries-list',
@@ -7,7 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistriesListComponent implements OnInit {
 
-  constructor() { }
+  registries: any;
+
+  constructor(private connection: UniversityServiceService) { 
+    this.connection.listRegistry().subscribe(registry => {
+      this.registries = registry;
+      console.log('lista:', this.registries);
+    })
+  }
 
   ngOnInit(): void {
   }
