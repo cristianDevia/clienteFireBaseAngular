@@ -24,6 +24,14 @@ export interface Student{
   gender: string;
 }
 
+export interface Program{
+  name: string;
+  programCode: number;
+  verification: string;
+  duration: string;
+  modality: number;
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -36,6 +44,10 @@ export class UniversityServiceService {
   private studentsCollection: AngularFirestoreCollection<Student>;
   private studentsDoc: AngularFirestoreDocument<Student>;
   students: Observable<Student[]>;
+
+  private programsCollection: AngularFirestoreCollection<Program>;
+  private programstsDoc: AngularFirestoreDocument<Program>;
+  programs: Observable<Program[]>;
 
   private _registry: Registry = {
     registryNumber: null,
@@ -67,6 +79,15 @@ export class UniversityServiceService {
       });
     }));
 
+    this.programsCollection = afs.collection<Program>('Program');
+    this.programs = this.programsCollection.snapshotChanges().pipe(map(actionsProgram => {
+      return actionsProgram.map(b => {
+        const data = b.payload.doc.data() as Program;
+        const id = b.payload.doc.id;
+        return { id, ...data };
+      });
+    }));
+
   }
 
   get registry()
@@ -82,12 +103,22 @@ export class UniversityServiceService {
     console.log('codigo y cedula estudiante:', this.registry);
   }
 
+  importProgramCodeRegistry(program)
+  {
+    this.registry.program = program.programCode;
+    console.log('codigo programa:', this.registry);
+  }
+
   listRegistry(){
     return this.registries;
   }
 
   listStudents(){
     return this.students;
+  }
+
+  listPrograms(){
+    return this.programs;
   }
 
   addNewRegistry(registry: Registry)

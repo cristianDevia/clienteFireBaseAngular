@@ -1,1 +1,22 @@
-<p>list-programs works!</p>
+<table class="table table-sm">
+    <thead>
+      <tr>
+        <th>Nombre </th> 
+        <th>Código</th>
+        <th>Registro Calificado</th>
+        <th>Duracion</th>
+        <th>Modalidad</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let progam of programs">
+            <td>{{progam.name}}</td>
+            <td>{{progam.programCode}}</td>
+            <td>{{progam.verification}}</td>
+            <td>{{progam.duration}}</td>
+            <td>{{progam.modality}}</td>
+            <td><button class="btn btn-danger" (click)="importProgramCode(progam)">Importar</button></td>
+          </tr>          
+    </tbody>
+  </table>
