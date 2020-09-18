@@ -28,8 +28,8 @@ export interface Program{
   name: string;
   programCode: number;
   verification: string;
-  duration: string;
-  modality: number;
+  duration: number;
+  modality: string;
 }
 
 @Injectable({
@@ -124,8 +124,10 @@ export class UniversityServiceService {
   addNewRegistry(registry: Registry)
   {
     const newRegistry = {... registry};
-    this.registryCollection.add(newRegistry);
+    //this.registryCollection.add(newRegistry);
+    this.registryCollection.doc(newRegistry.registryNumber.toString()).set(newRegistry);
     console.log('Matricula agregada', newRegistry);
+    
 
   }
 
